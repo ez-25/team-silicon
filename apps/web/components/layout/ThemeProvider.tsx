@@ -1,6 +1,9 @@
-"use client";
+'use client';
 
-import { createTheme, ThemeProvider as MUIThemeProvider } from '@mui/material/styles';
+import {
+  createTheme,
+  ThemeProvider as MUIThemeProvider,
+} from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import React from 'react';
 

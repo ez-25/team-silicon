@@ -36,7 +36,7 @@ export const METHOD = {
   POST: 'POST',
   PUT: 'PUT',
   DELETE: 'DELETE',
-  PATCH: 'PATCH'
+  PATCH: 'PATCH',
 };
 
 export const METHODS = [
@@ -44,7 +44,7 @@ export const METHODS = [
   METHOD.POST,
   METHOD.PUT,
   METHOD.DELETE,
-  METHOD.PATCH
+  METHOD.PATCH,
 ];
 
 /**
@@ -66,8 +66,8 @@ export function createCustomFetch(optionsDefault) {
       return r;
     })(),
     customFetchOptions: {
-      baseUrl
-    }
+      baseUrl,
+    },
   };
 
   return {
@@ -101,12 +101,12 @@ export function createCustomFetch(optionsDefault) {
             return {};
           }
           return { headers: hds };
-        })()
+        })(),
       );
 
       // fetch 호출 및 응답 처리
       return fetch(fullUrl, optionsThis)
-        .then(async response => {
+        .then(async (response) => {
           // 응답이 실패일 경우 에러 처리
           if (!response.ok) {
             let errorBody;
@@ -118,12 +118,16 @@ export function createCustomFetch(optionsDefault) {
               errorBody = {};
             }
             // HttpError 인스턴스 던지기
-            throw new HttpError(response.status, response.statusText, errorBody);
+            throw new HttpError(
+              response.status,
+              response.statusText,
+              errorBody,
+            );
           }
           // 성공 시 Response 객체 반환
           return response;
         })
-        .catch(error => {
+        .catch((error) => {
           // fetch 호출 중 발생한 에러 콘솔 출력 후 재던짐
           console.error('Fetch error:', error);
           throw error;
@@ -151,7 +155,9 @@ export function createCustomFetch(optionsDefault) {
         data.fetchOptions.headers = { [key]: value };
         return data.fetchOptions.headers;
       }
-      data.fetchOptions.headers = Object.assign({}, data.fetchOptions.headers, { [key]: value });
+      data.fetchOptions.headers = Object.assign({}, data.fetchOptions.headers, {
+        [key]: value,
+      });
       return data.fetchOptions.headers;
     },
 
@@ -161,7 +167,11 @@ export function createCustomFetch(optionsDefault) {
      * @returns {object} - 변경된 헤더 객체 반환
      */
     addHeaders: (headers) => {
-      data.fetchOptions.headers = Object.assign({}, data.fetchOptions.headers, headers);
+      data.fetchOptions.headers = Object.assign(
+        {},
+        data.fetchOptions.headers,
+        headers,
+      );
       return data.fetchOptions.headers;
     },
 
@@ -171,7 +181,7 @@ export function createCustomFetch(optionsDefault) {
      */
     getHeaders: () => {
       return Object.assign({}, data.fetchOptions.headers || {});
-    }
+    },
   };
 }
 
@@ -189,11 +199,11 @@ export function makeApiMethod(customFetch, method) {
    * @returns {Promise<any>} - JSON 파싱된 응답 데이터 반환 프로미스
    * @throws {HttpError|Error} - HTTP 에러 또는 기타 에러 발생 시 던짐
    */
-  return function(endpoint, fetchOptions) {
+  return function (endpoint, fetchOptions) {
     return customFetch
       .fetch(endpoint, Object.assign({}, fetchOptions, { method }))
-      .then(res => res.json()) // 성공 시 JSON 파싱
-      .catch(error => {
+      .then((res) => res.json()) // 성공 시 JSON 파싱
+      .catch((error) => {
         // HttpError 인스턴스면 그대로 던지고, 아니면 일반 에러 던짐
         if (error instanceof HttpError) {
           throw error;
@@ -214,7 +224,7 @@ export function makeFetchMethods(customFetch) {
     post: makeApiMethod(customFetch, METHOD.POST),
     put: makeApiMethod(customFetch, METHOD.PUT),
     deleteFetch: makeApiMethod(customFetch, METHOD.DELETE),
-    patch: makeApiMethod(customFetch, METHOD.PATCH)
+    patch: makeApiMethod(customFetch, METHOD.PATCH),
   };
 }
 

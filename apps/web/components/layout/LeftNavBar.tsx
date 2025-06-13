@@ -1,16 +1,16 @@
-"use client";
+'use client';
 
 import React, { useState } from 'react';
-import { 
-  Drawer, 
-  List, 
-  ListItem, 
-  ListItemButton, 
-  ListItemIcon, 
-  ListItemText, 
-  Collapse, 
-  Box, 
-  Toolbar
+import {
+  Drawer,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  Collapse,
+  Box,
+  Toolbar,
 } from '@mui/material';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
@@ -46,8 +46,8 @@ const LeftNavBar: React.FC = () => {
       <Box sx={{ overflow: 'auto' }}>
         <List>
           <ListItem disablePadding>
-            <ListItemButton 
-              component={Link} 
+            <ListItemButton
+              component={Link}
               href="/"
               selected={pathname === '/'}
             >
@@ -59,8 +59,8 @@ const LeftNavBar: React.FC = () => {
           </ListItem>
 
           <ListItem disablePadding>
-            <ListItemButton 
-              component={Link} 
+            <ListItemButton
+              component={Link}
               href="/table"
               selected={pathname === '/table'}
             >
@@ -72,8 +72,8 @@ const LeftNavBar: React.FC = () => {
           </ListItem>
 
           <ListItem disablePadding>
-            <ListItemButton 
-              component={Link} 
+            <ListItemButton
+              component={Link}
               href="/table"
               selected={pathname === '/flow'}
             >
@@ -83,7 +83,7 @@ const LeftNavBar: React.FC = () => {
               <ListItemText primary="Flow" />
             </ListItemButton>
           </ListItem>
-          
+
           <ListItem disablePadding>
             <ListItemButton onClick={handleChartsClick}>
               <ListItemIcon>
@@ -93,10 +93,10 @@ const LeftNavBar: React.FC = () => {
               {chartsOpen ? <ExpandLess /> : <ExpandMore />}
             </ListItemButton>
           </ListItem>
-          
+
           <Collapse in={chartsOpen} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
-              <ListItemButton 
+              <ListItemButton
                 sx={{ pl: 4 }}
                 component={Link}
                 href="/charts/chart1"
@@ -107,8 +107,8 @@ const LeftNavBar: React.FC = () => {
                 </ListItemIcon>
                 <ListItemText primary="차트1" />
               </ListItemButton>
-              
-              <ListItemButton 
+
+              <ListItemButton
                 sx={{ pl: 4 }}
                 component={Link}
                 href="/charts/chart2"

@@ -8,10 +8,34 @@
     { "id": 2, "title": "Next.js 심화", "description": "Next.js 고급 강좌" }
   ],
   "users": [
-    { "id": 1, "name": "Alice", "age": 25, "job": "Engineer", "city": "New York" },
-    { "id": 2, "name": "Bob", "age": 30, "job": "Designer", "city": "San Francisco" },
-    { "id": 3, "name": "Charlie", "age": 22, "job": "Developer", "city": "Chicago" },
-    { "id": 4, "name": "Diana", "age": 35, "job": "Manager", "city": "Seattle" },
+    {
+      "id": 1,
+      "name": "Alice",
+      "age": 25,
+      "job": "Engineer",
+      "city": "New York"
+    },
+    {
+      "id": 2,
+      "name": "Bob",
+      "age": 30,
+      "job": "Designer",
+      "city": "San Francisco"
+    },
+    {
+      "id": 3,
+      "name": "Charlie",
+      "age": 22,
+      "job": "Developer",
+      "city": "Chicago"
+    },
+    {
+      "id": 4,
+      "name": "Diana",
+      "age": 35,
+      "job": "Manager",
+      "city": "Seattle"
+    },
     { "id": 5, "name": "Ethan", "age": 28, "job": "Analyst", "city": "Boston" }
   ]
 }

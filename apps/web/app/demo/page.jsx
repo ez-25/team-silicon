@@ -1,22 +1,21 @@
 'use client';
 
-import styles from "../page.module.css";
+import styles from '../page.module.css';
 import { Button } from '@mui/material';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 
-
 const options = {
   title: {
-    text: 'My First Highchart'
+    text: 'My First Highchart',
   },
   series: [
     {
       type: 'line',
       name: 'Demo Line',
-      data: [1, 3, 2, 4]
-    }
-  ]
+      data: [1, 3, 2, 4],
+    },
+  ],
 };
 
 export default function Home() {
@@ -27,4 +26,4 @@ export default function Home() {
       <HighchartsReact highcharts={Highcharts} options={options} />
     </div>
   );
-} 
+}

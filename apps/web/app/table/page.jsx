@@ -9,7 +9,6 @@ export function Table1({ data }) {
 
   const headers = Object.keys(data[0]);
 
-
   return (
     <table style={{ borderCollapse: 'collapse', width: '100%' }}>
       <thead>
@@ -80,7 +79,8 @@ export default function TablePage() {
 
   const { data: users } = useQuery({
     queryKey: ['users'],
-    queryFn: () => fetch('http://localhost:4002/users').then(res => res.json()),
+    queryFn: () =>
+      fetch('http://localhost:4002/users').then((res) => res.json()),
   });
 
   return (

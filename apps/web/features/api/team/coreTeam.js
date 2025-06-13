@@ -1,7 +1,11 @@
-import { createCustomFetch, makeFetchMethods } from '@/shared/fetch/customFetch';
+import {
+  createCustomFetch,
+  makeFetchMethods,
+} from '@/shared/fetch/customFetch';
 
 // 환경에 맞게 경로 세팅
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:4002';
+const API_BASE_URL =
+  process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:4002';
 const PRE_PATH = ''; // 실제 API 엔드포인트에 맞게 조정
 const BASE_URL = `${API_BASE_URL}${PRE_PATH}`;
 
@@ -30,8 +34,13 @@ const handleResponse = async (promise) => {
 };
 
 // 아래는 coreOptimize.ts와 같은 스타일의 래핑 메서드
-export const get = (endpoint, fetchOptions) => handleResponse(methods.get(endpoint, fetchOptions));
-export const put = (endpoint, fetchOptions) => handleResponse(methods.put(endpoint, fetchOptions));
-export const post = (endpoint, fetchOptions) => handleResponse(methods.post(endpoint, fetchOptions));
-export const patch = (endpoint, fetchOptions) => handleResponse(methods.patch(endpoint, fetchOptions));
-export const deleteFetch = (endpoint, fetchOptions) => handleResponse(methods.deleteFetch(endpoint, fetchOptions));
+export const get = (endpoint, fetchOptions) =>
+  handleResponse(methods.get(endpoint, fetchOptions));
+export const put = (endpoint, fetchOptions) =>
+  handleResponse(methods.put(endpoint, fetchOptions));
+export const post = (endpoint, fetchOptions) =>
+  handleResponse(methods.post(endpoint, fetchOptions));
+export const patch = (endpoint, fetchOptions) =>
+  handleResponse(methods.patch(endpoint, fetchOptions));
+export const deleteFetch = (endpoint, fetchOptions) =>
+  handleResponse(methods.deleteFetch(endpoint, fetchOptions));
