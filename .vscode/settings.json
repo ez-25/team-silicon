@@ -1,0 +1,8 @@
+{
+  "eslint.workingDirectories": [
+    {
+      "mode": "auto"
+    }
+  ],
+  "eslint.nodePath": "./node_modules/.pnpm"
+}
