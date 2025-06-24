@@ -42,7 +42,6 @@ This is a Turborepo monorepo containing multiple Next.js applications with a sha
 - **Framework:** Next.js 15+ with Turbopack
 - **UI Library:** Material-UI v7 with Emotion styling
 - **Charts:** @mui/x-charts for data visualization
-- **Flow Diagrams:** ReactFlow for interactive diagrams
 - **State Management:** Zustand for global state
 - **Data Fetching:** @tanstack/react-query (configured in root)
 - **Type Checking:** TypeScript 5.8.2
@@ -51,9 +50,6 @@ This is a Turborepo monorepo containing multiple Next.js applications with a sha
 
 - `app/` - Next.js app router pages
   - `charts/` - Chart visualization pages (chart1, chart2)
-  - `demo/` - Demo functionality
-  - `flow/` - ReactFlow diagram pages
-  - `table/` - Data table pages
 - `components/layout/` - Layout components (Header, LeftNavBar, MainLayout, ThemeProvider)
 - `features/api/` - API layer with team/student endpoints
 - `store/` - Zustand stores (userInfoStore for global state)

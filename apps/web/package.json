@@ -19,8 +19,7 @@
     "eztest": "workspace:*",
     "next": "^15.2.4",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "reactflow": "^11.11.4"
+    "react-dom": "^19.1.0"
   },
   "devDependencies": {
     "@pandacss/dev": "^0.54.0",

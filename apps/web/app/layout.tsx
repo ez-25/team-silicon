@@ -15,9 +15,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: 'EZ-Template Dashboard',
-  description:
-    'Frontend project with Turborepo, NextJS, MUI, Highcharts, React-Flow',
+  title: 'Dashboard',
+  description: 'Frontend project with Turborepo, NextJS, MUI',
 };
 
 export default function RootLayout({

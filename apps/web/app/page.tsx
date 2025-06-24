@@ -1,50 +1,57 @@
 'use client';
 
-import { Typography, Paper, Box, Card, CardContent } from '@mui/material';
+import { Typography, Box, Button } from '@mui/material';
+import { useRouter } from 'next/navigation';
 
 export default function HomePage() {
+  const router = useRouter();
+
   return (
     <div>
       <Typography variant="h4" gutterBottom>
-        Welcome to EZ-Template Dashboard
+        Dashboard
       </Typography>
 
-      <Paper sx={{ p: 2, mb: 3 }}>
-        <Typography variant="body1">
-          This is a frontend project built with Turborepo, Next.js, MUI,
-          Highcharts, and React-Flow.
-        </Typography>
-      </Paper>
+      <Box sx={{ display: 'flex', gap: 3, flexWrap: 'wrap' }}>
+        <Button
+          variant="outlined"
+          onClick={() => router.push('/charts/chart1')}
+          sx={{
+            p: 3,
+            height: 'auto',
+            textAlign: 'left',
+            justifyContent: 'flex-start',
+            flexDirection: 'column',
+            alignItems: 'flex-start',
+          }}
+        >
+          <Typography variant="h5" gutterBottom>
+            가상화폐 차트 조회 웹 서비스
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            오지철
+          </Typography>
+        </Button>
 
-      <Box
-        sx={{
-          display: 'grid',
-          gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' },
-          gap: 3,
-        }}
-      >
-        <Card>
-          <CardContent>
-            <Typography variant="h6" gutterBottom>
-              Charts
-            </Typography>
-            <Typography variant="body2">
-              Navigate to the charts section to view interactive data
-              visualizations using Highcharts.
-            </Typography>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardContent>
-            <Typography variant="h6" gutterBottom>
-              Flowcharts
-            </Typography>
-            <Typography variant="body2">
-              Explore interactive flowcharts and diagrams built with React-Flow.
-            </Typography>
-          </CardContent>
-        </Card>
+        <Button
+          variant="outlined"
+          onClick={() => router.push('/charts/chart2')}
+          sx={{
+            p: 3,
+            height: 'auto',
+            textAlign: 'left',
+            justifyContent: 'flex-start',
+            flexDirection: 'column',
+            alignItems: 'flex-start',
+          }}
+        >
+          <Typography variant="h5" gutterBottom>
+            정렬 알고리즘 시각 및 청각화 데모
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            김무훈
+          </Typography>
+        </Button>
       </Box>
     </div>
   );

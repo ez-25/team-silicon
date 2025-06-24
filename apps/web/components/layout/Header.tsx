@@ -11,7 +11,7 @@ const Header: React.FC = () => {
     >
       <Toolbar>
         <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
-          EZ-Template Dashboard
+          Dashboard
         </Typography>
       </Toolbar>
     </AppBar>
