@@ -24,7 +24,7 @@ export const insertionSortPlugin: SortingPlugin = {
       // 현재 삽입할 원소에 접근
       callbacks.onAccess(i);
       callbacks.onStep([...arr], `키 ${key}를 정렬된 부분에 삽입`);
-      await new Promise((resolve) => setTimeout(resolve, 150));
+      await new Promise((resolve) => setTimeout(resolve, callbacks.getAnimationSpeed()));
 
       // 정렬된 부분에서 올바른 위치 찾기
       while (j >= 0 && arr[j] > key) {
@@ -40,7 +40,7 @@ export const insertionSortPlugin: SortingPlugin = {
         callbacks.onSwap(j, j + 1);
 
         callbacks.onStep([...arr], `${arr[j] || 0}을 오른쪽으로 이동`);
-        await new Promise((resolve) => setTimeout(resolve, 150));
+        await new Promise((resolve) => setTimeout(resolve, callbacks.getAnimationSpeed()));
 
         j--;
       }
@@ -48,7 +48,7 @@ export const insertionSortPlugin: SortingPlugin = {
       // 키를 올바른 위치에 삽입
       arr[j + 1] = key;
       callbacks.onStep([...arr], `키 ${key}를 위치 ${j + 1}에 삽입`);
-      await new Promise((resolve) => setTimeout(resolve, 150));
+      await new Promise((resolve) => setTimeout(resolve, callbacks.getAnimationSpeed()));
 
       // 삽입 완료된 위치 표시
       callbacks.onComplete(j + 1);

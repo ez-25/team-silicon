@@ -37,7 +37,7 @@ export const bubbleSortPlugin: SortingPlugin = {
         callbacks.onStep([...arr], `비교: ${j}번째와 ${j + 1}번째`);
 
         // 애니메이션을 위한 딜레이
-        await new Promise((resolve) => setTimeout(resolve, 100));
+        await new Promise((resolve) => setTimeout(resolve, callbacks.getAnimationSpeed()));
       }
 
       // 정렬 완료된 원소 표시

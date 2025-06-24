@@ -32,6 +32,7 @@ export default function Chart2Page() {
   const [currentStep, setCurrentStep] = useState('');
   const [arraySize, setArraySize] = useState(20);
   const [audioEnabled, setAudioEnabled] = useState(true);
+  const [animationSpeed, setAnimationSpeed] = useState(150); // 애니메이션 속도 (ms)
   const [startTime, setStartTime] = useState(0);
   const shouldStopRef = useRef(false);
 
@@ -156,6 +157,8 @@ export default function Chart2Page() {
         }
       },
 
+      getAnimationSpeed: () => animationSpeed,
+
       onSwap: (indexA: number, indexB: number) => {
         setSortingState((prev) => ({
           ...prev,
@@ -264,6 +267,8 @@ export default function Chart2Page() {
           onArraySizeChange={setArraySize}
           audioEnabled={audioEnabled}
           onAudioToggle={handleAudioToggle}
+          animationSpeed={animationSpeed}
+          onAnimationSpeedChange={setAnimationSpeed}
         />
 
         <Box sx={{ display: 'flex', gap: 3, flexWrap: 'wrap' }}>

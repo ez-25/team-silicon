@@ -28,7 +28,7 @@ export const mergeSortPlugin: SortingPlugin = {
 
       // 분할 단계 시각화
       callbacks.onStep([...arr], `구간 [${left}, ${right}]를 [${left}, ${mid}]와 [${mid + 1}, ${right}]로 분할`);
-      await new Promise((resolve) => setTimeout(resolve, 200));
+      await new Promise((resolve) => setTimeout(resolve, callbacks.getAnimationSpeed() * 1.5));
 
       // 왼쪽 절반 정렬
       await mergeSort(tempArr, left, mid);
@@ -59,7 +59,7 @@ export const mergeSortPlugin: SortingPlugin = {
       let k = left; // 병합된 배열의 인덱스
 
       callbacks.onStep([...arr], `구간 [${left}, ${mid}]와 [${mid + 1}, ${right}] 병합 시작`);
-      await new Promise((resolve) => setTimeout(resolve, 200));
+      await new Promise((resolve) => setTimeout(resolve, callbacks.getAnimationSpeed() * 1.5));
 
       // 두 부분을 비교하여 병합
       while (i <= mid && j <= right) {
@@ -82,7 +82,7 @@ export const mergeSortPlugin: SortingPlugin = {
 
         callbacks.onAccess(k);
         k++;
-        await new Promise((resolve) => setTimeout(resolve, 150));
+        await new Promise((resolve) => setTimeout(resolve, callbacks.getAnimationSpeed()));
       }
 
       // 왼쪽 부분에 남은 원소들 복사
@@ -93,7 +93,7 @@ export const mergeSortPlugin: SortingPlugin = {
         callbacks.onStep([...arr], `남은 원소 ${tempArr[i] || 0}을 위치 ${k}에 배치`);
         i++;
         k++;
-        await new Promise((resolve) => setTimeout(resolve, 150));
+        await new Promise((resolve) => setTimeout(resolve, callbacks.getAnimationSpeed()));
       }
 
       // 오른쪽 부분에 남은 원소들 복사
@@ -104,7 +104,7 @@ export const mergeSortPlugin: SortingPlugin = {
         callbacks.onStep([...arr], `남은 원소 ${tempArr[j] || 0}을 위치 ${k}에 배치`);
         j++;
         k++;
-        await new Promise((resolve) => setTimeout(resolve, 150));
+        await new Promise((resolve) => setTimeout(resolve, callbacks.getAnimationSpeed()));
       }
 
       // 병합 완료된 구간 표시
@@ -113,7 +113,7 @@ export const mergeSortPlugin: SortingPlugin = {
       }
 
       callbacks.onStep([...arr], `구간 [${left}, ${right}] 병합 완료`);
-      await new Promise((resolve) => setTimeout(resolve, 200));
+      await new Promise((resolve) => setTimeout(resolve, callbacks.getAnimationSpeed() * 1.5));
     };
 
     // 임시 배열 생성

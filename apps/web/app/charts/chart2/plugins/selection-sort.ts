@@ -21,7 +21,7 @@ export const selectionSortPlugin: SortingPlugin = {
       let minIndex = i;
       callbacks.onAccess(i);
       callbacks.onStep([...arr], `위치 ${i}부터 최솟값 찾기 시작`);
-      await new Promise((resolve) => setTimeout(resolve, 150));
+      await new Promise((resolve) => setTimeout(resolve, callbacks.getAnimationSpeed()));
 
       // 최솟값 찾기
       for (let j = i + 1; j < arr.length; j++) {
@@ -39,7 +39,7 @@ export const selectionSortPlugin: SortingPlugin = {
           callbacks.onStep([...arr], `${arr[j] || 0}와 ${arr[minIndex] || 0} 비교`);
         }
 
-        await new Promise((resolve) => setTimeout(resolve, 150));
+        await new Promise((resolve) => setTimeout(resolve, callbacks.getAnimationSpeed()));
       }
 
       // 최솟값을 올바른 위치로 이동
@@ -53,7 +53,7 @@ export const selectionSortPlugin: SortingPlugin = {
 
       // 정렬 완료된 위치 표시
       callbacks.onComplete(i);
-      await new Promise((resolve) => setTimeout(resolve, 150));
+      await new Promise((resolve) => setTimeout(resolve, callbacks.getAnimationSpeed()));
     }
 
     // 중단되지 않았다면 마지막 원소도 완료 표시

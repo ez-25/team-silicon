@@ -76,7 +76,7 @@ async function partition(
     callbacks.onStep([...arr], `피벗 ${pivot}과 비교: ${arr[j] || 0}`);
 
     // 애니메이션을 위한 딜레이
-    await new Promise((resolve) => setTimeout(resolve, 150));
+    await new Promise((resolve) => setTimeout(resolve, callbacks.getAnimationSpeed()));
   }
 
   // 중단 확인
@@ -87,7 +87,7 @@ async function partition(
   [arr[i + 1], arr[high]] = [arr[high] || 0, arr[i + 1] || 0];
 
   callbacks.onStep([...arr], `피벗 ${pivot}을 위치 ${i + 1}로 이동`);
-  await new Promise((resolve) => setTimeout(resolve, 150));
+  await new Promise((resolve) => setTimeout(resolve, callbacks.getAnimationSpeed()));
 
   return i + 1;
 }

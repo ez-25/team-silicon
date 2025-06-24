@@ -24,6 +24,7 @@ export interface SortingCallbacks {
   onComplete: (index: number) => void;
   onStep: (currentArray: number[], step: string) => void;
   shouldStop: () => boolean;
+  getAnimationSpeed: () => number;
 }
 
 /**

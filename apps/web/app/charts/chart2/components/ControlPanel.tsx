@@ -33,6 +33,8 @@ interface ControlPanelProps {
   onArraySizeChange: (size: number) => void;
   audioEnabled: boolean;
   onAudioToggle: (enabled: boolean) => void;
+  animationSpeed: number;
+  onAnimationSpeedChange: (speed: number) => void;
 }
 
 /**
@@ -50,6 +52,8 @@ export const ControlPanel: React.FC<ControlPanelProps> = ({
   onArraySizeChange,
   audioEnabled,
   onAudioToggle,
+  animationSpeed,
+  onAnimationSpeedChange,
 }) => {
   return (
     <Paper sx={{ p: 3, mb: 3 }}>
@@ -117,6 +121,27 @@ export const ControlPanel: React.FC<ControlPanelProps> = ({
             { value: 5, label: '5' },
             { value: 20, label: '20' },
             { value: 50, label: '50' },
+          ]}
+        />
+      </Box>
+
+      {/* 애니메이션 속도 조절 */}
+      <Box sx={{ mb: 3 }}>
+        <Typography variant="subtitle2" gutterBottom>
+          애니메이션 속도: {animationSpeed}ms
+        </Typography>
+        <Slider
+          value={animationSpeed}
+          onChange={(_, value) => onAnimationSpeedChange(value as number)}
+          min={50}
+          max={500}
+          step={10}
+          disabled={isRunning}
+          marks={[
+            { value: 50, label: '빠름' },
+            { value: 150, label: '보통' },
+            { value: 300, label: '느림' },
+            { value: 500, label: '매우 느림' },
           ]}
         />
       </Box>
