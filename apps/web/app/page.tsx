@@ -1,6 +1,6 @@
 'use client';
 
-import { Typography, Paper, Grid, Card, CardContent } from '@mui/material';
+import { Typography, Paper, Box, Card, CardContent } from '@mui/material';
 
 export default function HomePage() {
   return (
@@ -16,35 +16,36 @@ export default function HomePage() {
         </Typography>
       </Paper>
 
-      <Grid container spacing={3}>
-        <Grid item xs={12} md={6}>
-          <Card>
-            <CardContent>
-              <Typography variant="h6" gutterBottom>
-                Charts
-              </Typography>
-              <Typography variant="body2">
-                Navigate to the charts section to view interactive data
-                visualizations using Highcharts.
-              </Typography>
-            </CardContent>
-          </Card>
-        </Grid>
+      <Box
+        sx={{
+          display: 'grid',
+          gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' },
+          gap: 3,
+        }}
+      >
+        <Card>
+          <CardContent>
+            <Typography variant="h6" gutterBottom>
+              Charts
+            </Typography>
+            <Typography variant="body2">
+              Navigate to the charts section to view interactive data
+              visualizations using Highcharts.
+            </Typography>
+          </CardContent>
+        </Card>
 
-        <Grid item xs={12} md={6}>
-          <Card>
-            <CardContent>
-              <Typography variant="h6" gutterBottom>
-                Flowcharts
-              </Typography>
-              <Typography variant="body2">
-                Explore interactive flowcharts and diagrams built with
-                React-Flow.
-              </Typography>
-            </CardContent>
-          </Card>
-        </Grid>
-      </Grid>
+        <Card>
+          <CardContent>
+            <Typography variant="h6" gutterBottom>
+              Flowcharts
+            </Typography>
+            <Typography variant="body2">
+              Explore interactive flowcharts and diagrams built with React-Flow.
+            </Typography>
+          </CardContent>
+        </Card>
+      </Box>
     </div>
   );
 }
