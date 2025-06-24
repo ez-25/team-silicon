@@ -8,9 +8,12 @@
   "scripts": {
     "lint": "eslint . --max-warnings 0",
     "generate:component": "turbo gen react-component",
-    "check-types": "tsc --noEmit"
+    "check-types": "tsc --noEmit",
+    "prepare": "panda codegen",
+    "build": "panda codegen"
   },
   "devDependencies": {
+    "@pandacss/dev": "^0.54.0",
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "@turbo/gen": "^2.5.0",

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
-import './globals.css';
+import '../src/app/globals.css';
 import ThemeProvider from '@/components/layout/ThemeProvider';
 import MainLayout from '@/components/layout/MainLayout';
 import { Providers } from '@/shared/providers/providers';
