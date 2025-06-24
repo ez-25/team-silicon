@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { AppBar, Toolbar, Typography, IconButton, Box } from '@mui/material';
+import { AppBar, Toolbar, Typography } from '@mui/material';
 
 const Header: React.FC = () => {
   return (
