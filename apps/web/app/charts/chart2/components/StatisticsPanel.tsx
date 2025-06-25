@@ -1,5 +1,3 @@
-'use client';
-
 import React from 'react';
 import { Box, Paper, Typography, LinearProgress } from '@mui/material';
 import { SortingStats } from '../types/sorting';
