@@ -31,7 +31,6 @@ This is a Turborepo monorepo containing multiple Next.js applications with a sha
 ### Monorepo Structure
 
 - `apps/web/` - Main dashboard application with MUI, charts, and data visualization
-- `apps/docs/` - Documentation/demo application
 - `packages/ui/` - Shared React component library
 - `packages/eslint-config/` - Shared ESLint configurations
 - `packages/typescript-config/` - Shared TypeScript configurations
