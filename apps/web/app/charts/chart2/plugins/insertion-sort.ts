@@ -27,7 +27,7 @@ export const insertionSortPlugin: SortingPlugin = {
       await new Promise((resolve) => setTimeout(resolve, callbacks.getAnimationSpeed()));
 
       // 정렬된 부분에서 올바른 위치 찾기
-      while (j >= 0 && arr[j] > key) {
+      while (j >= 0 && arr[j]! > key) {
         // 중단 확인
         if (callbacks.shouldStop()) return;
 
