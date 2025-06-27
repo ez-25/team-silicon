@@ -107,6 +107,7 @@ const Chart1 = ({ selectedCoin, selectedTimeRange, onTimeRangeSelect }: Chart1Pr
                 {
                   data: bitcoinData.map((d: CandlestickData) => parseFloat(d[2])),
                   label: selectedCoin,
+                  showMark: false,
                 },
               ]}
               xAxis={[{
