@@ -39,3 +39,4 @@ yarn-error.log*
 
 # PandaCSS generated files
 styled-system/
+pnpm-lock.yaml
