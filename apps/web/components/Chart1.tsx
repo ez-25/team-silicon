@@ -129,7 +129,7 @@ const Chart1 = ({ selectedCoin, selectedTimeRange, onTimeRangeSelect }: Chart1Pr
               ]}
               xAxis={[{
                 scaleType: 'point',
-                data: bitcoinData.map((d: CandlestickData) => {
+                data: [...bitcoinData].reverse().map((d: CandlestickData) => {
                   const date = new Date(d.timestamp);
                   if (selectedTimeRange === '1m' || selectedTimeRange === '1h') {
                     return date.toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit' });
@@ -142,13 +142,7 @@ const Chart1 = ({ selectedCoin, selectedTimeRange, onTimeRangeSelect }: Chart1Pr
               margin={{ top: 10, bottom: 20, left: 30, right: 10 }}
             />
           </div>
-          <p style={{ marginTop: '10px', fontSize: '14px', color: '#555' }}>
-            Data points: {bitcoinData.length}
-          </p>
-          {/* Display some raw data for verification */}
-          <pre style={{ fontSize: '12px', backgroundColor: '#eee', padding: '10px', borderRadius: '4px', maxHeight: '150px', overflowY: 'auto' }}>
-            {JSON.stringify(bitcoinData.slice(0, 5), null, 2)}
-          </pre>
+          
         </div>
       )}
     </div>
