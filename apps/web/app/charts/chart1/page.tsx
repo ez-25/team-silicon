@@ -94,9 +94,10 @@ const Chart1Page = () => {
                   borderRadius: '4px',
                   padding: '2px 6px',
                   cursor: 'pointer',
+                  color: 'black',
                 }}
               >
-                -
+                X
               </button>
             </li>
           ))}

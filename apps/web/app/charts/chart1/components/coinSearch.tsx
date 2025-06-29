@@ -51,6 +51,8 @@ export const CoinSearch = ({
           borderRadius: '4px',
           border: '1px solid #ccc',
           boxSizing: 'border-box',
+          backgroundColor: 'white',
+          color: 'black',
         }}
       />
       {searchTerm && (
