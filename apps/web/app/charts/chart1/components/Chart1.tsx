@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { LineChart } from '@mui/x-charts';
-import { createCustomFetch, makeFetchMethods, HttpError } from '../shared/fetch/customFetch';
+import {
+  createCustomFetch,
+  makeFetchMethods,
+  HttpError,
+} from '../../../../shared/fetch/customFetch';
 
 // Define types for Bithumb API response
 type CandlestickData = {
@@ -23,14 +27,19 @@ interface BithumbApiResponse extends Array<CandlestickData> {} // API now return
 
 // Extend the return type of makeFetchMethods to include the 'get' method
 interface CustomFetchMethods {
-  get: (endpoint: string, fetchOptions?: RequestInit) => Promise<BithumbApiResponse>;
+  get: (
+    endpoint: string,
+    fetchOptions?: RequestInit,
+  ) => Promise<BithumbApiResponse>;
   post: (endpoint: string, fetchOptions?: RequestInit) => Promise<any>;
   put: (endpoint: string, fetchOptions?: RequestInit) => Promise<any>;
   deleteFetch: (endpoint: string, fetchOptions?: RequestInit) => Promise<any>;
   patch: (endpoint: string, fetchOptions?: RequestInit) => Promise<any>;
 }
 
-const bithumbApi = makeFetchMethods(createCustomFetch({ baseUrl: 'https://api.bithumb.com' })) as CustomFetchMethods;
+const bithumbApi = makeFetchMethods(
+  createCustomFetch({ baseUrl: 'https://api.bithumb.com' }),
+) as CustomFetchMethods;
 
 interface Chart1Props {
   selectedCoin: string;
@@ -39,8 +48,14 @@ interface Chart1Props {
   onCoinSelect: (coin: string) => void;
 }
 
-const Chart1 = ({ selectedCoin, selectedTimeRange, onTimeRangeSelect }: Chart1Props) => {
-  const [bitcoinData, setBitcoinData] = useState<CandlestickData[] | null>(null);
+const Chart1 = ({
+  selectedCoin,
+  selectedTimeRange,
+  onTimeRangeSelect,
+}: Chart1Props) => {
+  const [bitcoinData, setBitcoinData] = useState<CandlestickData[] | null>(
+    null,
+  );
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -78,7 +93,9 @@ const Chart1 = ({ selectedCoin, selectedTimeRange, onTimeRangeSelect }: Chart1Pr
             endpoint = `/v1/candles/days?count=24&market=${selectedCoin}`; // Default to 24 days for 24h range if not minute
             break;
         }
-        console.log(`Fetching data for ${selectedCoin} from endpoint: ${endpoint}`);
+        console.log(
+          `Fetching data for ${selectedCoin} from endpoint: ${endpoint}`,
+        );
         const data = await bithumbApi.get(endpoint);
         // The API now returns an array directly, not an object with status and data.
         // We assume a successful fetch if 'data' is an array.
@@ -117,7 +134,9 @@ const Chart1 = ({ selectedCoin, selectedTimeRange, onTimeRangeSelect }: Chart1Pr
       {error && <p style={{ color: 'red' }}>Error: {error}</p>}
       {bitcoinData && bitcoinData.length > 0 && !loading && !error && (
         <div>
-          <h3 style={{ marginBottom: '10px' }}>{selectedCoin} Chart ({selectedTimeRange})</h3>
+          <h3 style={{ marginBottom: '10px' }}>
+            {selectedCoin} Chart ({selectedTimeRange})
+          </h3>
           <div style={{ width: '100%', height: 300 }}>
             <LineChart
               series={[
@@ -127,22 +146,29 @@ const Chart1 = ({ selectedCoin, selectedTimeRange, onTimeRangeSelect }: Chart1Pr
                   showMark: false,
                 },
               ]}
-              xAxis={[{
-                scaleType: 'point',
-                data: [...bitcoinData].reverse().map((d: CandlestickData) => {
-                  const date = new Date(d.timestamp);
-                  if (selectedTimeRange === '1m' || selectedTimeRange === '1h') {
-                    return date.toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit' });
-                  } else {
-                    return date.toLocaleDateString('ko-KR');
-                  }
-                }),
-              }]}
+              xAxis={[
+                {
+                  scaleType: 'point',
+                  data: [...bitcoinData].reverse().map((d: CandlestickData) => {
+                    const date = new Date(d.timestamp);
+                    if (
+                      selectedTimeRange === '1m' ||
+                      selectedTimeRange === '1h'
+                    ) {
+                      return date.toLocaleTimeString('ko-KR', {
+                        hour: '2-digit',
+                        minute: '2-digit',
+                      });
+                    } else {
+                      return date.toLocaleDateString('ko-KR');
+                    }
+                  }),
+                },
+              ]}
               height={300}
               margin={{ top: 10, bottom: 20, left: 30, right: 10 }}
             />
           </div>
-          
         </div>
       )}
     </div>

@@ -1,10 +1,15 @@
-{
-  /* 검색 */
-}
-import React, { useState } from 'react';
-import { coinList } from '../../../../shared/coinList';
+'use client';
 
-export const CoinSearch = ({ coins, setCoins }: { coins: string[], setCoins: React.Dispatch<React.SetStateAction<string[]>> }) => {
+import React, { useState } from 'react';
+import { coinList } from '../coinList';
+
+export const CoinSearch = ({
+  coins,
+  setCoins,
+}: {
+  coins: string[];
+  setCoins: React.Dispatch<React.SetStateAction<string[]>>;
+}) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredCoins, setFilteredCoins] = useState(coinList);
 
@@ -13,10 +18,11 @@ export const CoinSearch = ({ coins, setCoins }: { coins: string[], setCoins: Rea
     setSearchTerm(value);
     if (value) {
       const lowercasedValue = value.toLowerCase();
-      const newFilteredCoins = coinList.filter(coin =>
-        coin.korean_name.toLowerCase().includes(lowercasedValue) ||
-        coin.english_name.toLowerCase().includes(lowercasedValue) ||
-        coin.market.toLowerCase().includes(lowercasedValue)
+      const newFilteredCoins = coinList.filter(
+        (coin) =>
+          coin.korean_name.toLowerCase().includes(lowercasedValue) ||
+          coin.english_name.toLowerCase().includes(lowercasedValue) ||
+          coin.market.toLowerCase().includes(lowercasedValue),
       );
       setFilteredCoins(newFilteredCoins);
     } else {
@@ -26,7 +32,7 @@ export const CoinSearch = ({ coins, setCoins }: { coins: string[], setCoins: Rea
 
   const handleCoinClick = (coinMarket: string) => {
     if (!coins.includes(coinMarket)) {
-      setCoins(prevCoins => [...prevCoins, coinMarket]);
+      setCoins((prevCoins) => [...prevCoins, coinMarket]);
     }
     setSearchTerm('');
     setFilteredCoins(coinList);
@@ -48,19 +54,21 @@ export const CoinSearch = ({ coins, setCoins }: { coins: string[], setCoins: Rea
         }}
       />
       {searchTerm && (
-        <ul style={{
-          listStyle: 'none',
-          padding: '0',
-          margin: '5px 0 0 0',
-          border: '1px solid #eee',
-          maxHeight: '200px',
-          overflowY: 'auto',
-          backgroundColor: 'white',
-          position: 'absolute',
-          width: 'calc(100% - 40px)', // Adjust based on parent padding/margin
-          zIndex: 1000,
-        }}>
-          {filteredCoins.map(coin => (
+        <ul
+          style={{
+            listStyle: 'none',
+            padding: '0',
+            margin: '5px 0 0 0',
+            border: '1px solid #eee',
+            maxHeight: '200px',
+            overflowY: 'auto',
+            backgroundColor: 'white',
+            position: 'absolute',
+            width: 'calc(100% - 40px)', // Adjust based on parent padding/margin
+            zIndex: 1000,
+          }}
+        >
+          {filteredCoins.map((coin) => (
             <li
               key={coin.market}
               onClick={() => handleCoinClick(coin.market)}

@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
 import React, { useState } from 'react';
-import { css } from '../styled-system/css';
+import { css } from '../../../../styled-system/css';
 
 interface TimeRangeSelectorProps {
   onSelect: (range: string) => void;
@@ -40,7 +40,10 @@ const containerStyle = css({
   zIndex: '10',
 });
 
-export const TimeRangeSelector: React.FC<TimeRangeSelectorProps> = ({ onSelect, initialRange = '1시간' }) => {
+export const TimeRangeSelector: React.FC<TimeRangeSelectorProps> = ({
+  onSelect,
+  initialRange = '1시간',
+}) => {
   const [selectedRange, setSelectedRange] = useState(initialRange);
 
   const ranges = ['1분', '1시간', '1주', '1달', '1년'];
